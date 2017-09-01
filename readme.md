@@ -85,13 +85,13 @@ SELECT OrderID, SUM(total)
 Group By OrderID
 - 12
 
-SELECT *, MAX(Somme) 
+SELECT ProductName, MAX(Somme) 
     FROM (
-    SELECT *, SUM(total)  AS Somme FROM (
-    SELECT OrderDetails.OrderID, Products.ProductID, Products.ProductName, OrderDetails.Quantity, Products.Price, (OrderDetails.Quantity * Products.Price) AS total 
+    SELECT ProductName, SUM(total)  AS Somme FROM (
+    SELECT OrderDetails.OrderID, Products.ProductID, Products.ProductName,(OrderDetails.Quantity * Products.Price) AS total 
     FROM OrderDetails, Products 
     ON Products.ProductID = OrderDetails.ProductID) 
-GROUP BY  ProductID;
+GROUP BY  ProductID);
 
 ![test](IMG/Q01.png)
 ![test](IMG/Q02.png)
